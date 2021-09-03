@@ -1,6 +1,17 @@
-import pyautogui, time, os
+# -*- coding: utf-8 -*-
+import time, os
+import pyautogui 
 from pynput.mouse import Listener
 
+banner = '''
+
+ ███╗   ███╗██████╗         ██████╗██╗     ██╗ ██████╗██╗  ██╗███████╗██████╗ 
+ ████╗ ████║██╔══██╗       ██╔════╝██║     ██║██╔════╝██║ ██╔╝██╔════╝██╔══██╗
+ ██╔████╔██║██████╔╝       ██║     ██║     ██║██║     █████╔╝ █████╗  ██████╔╝
+ ██║╚██╔╝██║██╔══██╗       ██║     ██║     ██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗
+ ██║ ╚═╝ ██║██║  ██║██╗    ╚██████╗███████╗██║╚██████╗██║  ██╗███████╗██║  ██║
+ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝     ╚═════╝╚══════╝╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+                                                                             \n'''
 
 def ClearScreen():
 
@@ -10,7 +21,7 @@ def ClearScreen():
     _ = os.system('cls')
 
 
-def read_cursor_position(): #abandoned when done it anyway
+def read_cursor_position(): #abandoned.... well done it another way
     pass
 
 
@@ -20,18 +31,20 @@ def print_blinking_text(text1, text2): # this thing was a misktake... thank god 
 
 def start(x_axis,y_axis):
     ClearScreen()
-    print('Press Ctrl-C to quit.\n\n')
+    print(banner)
+    print(' Press Ctrl-C to quit.\n\n')
 
-    print("Enter value of time counter...\n\n")    
-    hours = int(input("Hours: "))
-    minutes = int(input("Minutes: "))
-    seconds = int(input("Seconds: "))
+    print(" Enter value of time counter...\n\n")    
+    hours = int(input(" Hours: "))
+    minutes = int(input(" Minutes: "))
+    seconds = int(input(" Seconds: "))
 
     remaining_time= (hours * 3600) + (minutes * 60) + seconds #coverting time into seconds
     ClearScreen()
 
-    print('Press Ctrl-C to quit.\n')
-    print("This program will click !! \n")
+    print(banner)
+    print(' Press Ctrl-C to quit.\n')
+    print(" This program will click !! \n")
 
     
     x = "->Remaining time:" + str(remaining_time)
@@ -54,9 +67,6 @@ def start(x_axis,y_axis):
       break
 
 
-def on_move(x, y):
-    pass
-
 def on_click(x, y, button, pressed):
     global Xs, Ys
 
@@ -65,23 +75,30 @@ def on_click(x, y, button, pressed):
         Ys = y
         return False
 
-def on_scroll(x, y, dx, dy):
-    pass
+
+##### NOT REQUIRED #############
+def on_move(x, y):             #
+    pass                       #
+def on_scroll(x, y, dx, dy):   #
+    pass                       #
+################################
 
 def main():
     ClearScreen()
     try:
-        print("Click anywhere you want to be clicked !")
+
+        print(banner)
+        print(" Click anywhere you want to be clicked !")
         
         with Listener(on_move=on_move, on_click=on_click, on_scroll=on_scroll) as listener:
             listener.join()
 
         start(Xs, Ys)
 
-    except KeyboardInterrupt:
+    except KeyboardInterrupt: # Closes the program if Crtl + C is pressed
 
         ClearScreen()
-        print ("\nBye....")
+        print ("\n Bye....")
         time.sleep(2)
         ClearScreen()
 
