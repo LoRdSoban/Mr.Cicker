@@ -12,7 +12,9 @@ This is Mr. Clicker and he likes to click. :)
 
 ```http
   git clone https://github.com/LoRdSoban/mr_clicker
+  
   cd mr_clicker
+  
   pip3 install -r requirements.txt
 ```
 
