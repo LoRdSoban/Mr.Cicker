@@ -1,6 +1,8 @@
 # Mr.Cicker
 This is Mr. Clicker and he likes to click. :) 
 
+## Description (Incomplete)
+
 ![Image of program running](./images/1.png "Mr. Clicker program running")
 
 ![Image of program running](./images/2.png "Mr. Clicker program running")
